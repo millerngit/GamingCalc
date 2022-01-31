@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+Noah Miller
+-->
+<html>
+    <head>
+        <title>Noah Miller Midterm</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <script>
+        function findGamingCost(){
+            //declare variables
+            var cost=0; 
+            var console = 0;
+            var game = 0;
+            //assign value from input
+            console=document.getElementById("idconsole").value ;
+            console=parseInt(console);
+            game = document.getElementById("idgame").value; 
+            game = parseInt(game);
+            var cost= calcGamingCost(console,game);//calls function to calculate
+            //outputs data
+            var outputboxthing =  document.getElementById("output");
+            outputboxthing.value = cost; 
+            outputboxthing.innerHTML =  
+                   "Value = " + cost + outputboxthing.value + cost; 
+        }
+       
+        function calcGamingCost(c,g){
+//gC = gaming cost 
+// c = consoles
+// g = games
+            var gC= ((c*200)+(g*50));
+            return gC;
+        }
+      function resetbutton(){ 
+          //resets fields
+         var consoleinput = document.getElementById("idconsole");
+         var gameinput =  document.getElementById("idgame");
+         var outputboxthing =  document.getElementById("output");
+         
+         consoleinput.value = ""; 
+            consoleinput.innerHTML =  
+                   "Value = " + "" + consoleinput.value + ""; 
+           
+           gameinput.value = ""; 
+           gameinput.innerHTML =  
+                   "Value = " + "" + gameinput.value + ""; 
+           
+           outputboxthing.value = ""; 
+            outputboxthing.innerHTML =  
+                   "Value = " + "" + outputboxthing.value + ""; 
+        }
+        function errorCheckConsole(){
+            //checks for invalid inputs in console input 
+           var errorconsole=document.getElementById("idconsole").value ;
+            if (isNaN(errorconsole))
+             document.getElementById("error1").innerHTML = "Invalid Input";
+           else
+           document.getElementById("error1").innerHTML = "";
+        }
+        function errorCheckGame (){
+            //checks for invalid inputs in game input 
+           var errorgame=document.getElementById("idgame").value ;
+            if (isNaN(errorgame))
+             document.getElementById("error2").innerHTML = "Invalid Input";
+           else
+           document.getElementById("error2").innerHTML = "";
+            
+        }
+        
+         window.onload=function(){ 
+             console.log("Noah Miller");
+             document.getElementById("fgccalc").onclick=findGamingCost;
+             document.getElementById("reset").onclick=resetbutton;
+             document.getElementById("idconsole").onblur = errorCheckConsole;
+             document.getElementById("idgame").onblur = errorCheckGame;
+    };
+        
+       
+        
+        
+      
+        
+        
+        
+    </script>
+        <div><form id='myForm'>
+    <label for="idconsole">Enter the Number of Consoles</label>
+    <input type="text" id="idconsole" name="Number of consoles" placeholder="Enter the Number of consoles"><span id="error1"></span><br>
+
+    <label for="idgame">Enter the Number of Games</label>
+    <input type="text" id="idgame" name="Number of Games" placeholder="Enter the Number of Games"><span id="error2"></span><br>
+    
+    <input type="button" id="fgccalc" value="Find Cost of Gaming" /><br>
+    <input type="button" id="reset" value="Reset" /><br>
+    </form>
+    </div>
+    <div id="outputDiv">
+        <input type="text" id="output" name="output" placeholder=""> 
+        
+    </div>
+    </body>
+</html>
+
+
